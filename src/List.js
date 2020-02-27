@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 
 import Headline from './Headline'
 
-const List = ({ title, data = [], titleLevel = 1}) => {
+const List = ({ title, data = [], titleLevel = 1, loading }) => {
   return (
     <Fragment>
       <Headline level={titleLevel}>
         {title}
       </Headline>
-      <ul>
-        {data.map((item, index) => <li key={index}>{item.name}, {item.url}</li>)}
-      </ul>
+      {loading ? <Headline level={4}>Loading data...</Headline> : (
+        <ul>
+          {data.map((item, index) => <li key={index}>{item.name}, {item.url}</li>)}
+        </ul>
+      )}
+      
     </Fragment>
   )
 }
@@ -28,7 +31,8 @@ const PokemonType = PropTypes.shape({
 List.propTypes = {
   title: PropTypes.string.isRequired,
   titleLevel: PropTypes.number,
-  data: PropTypes.arrayOf(PokemonType).isRequired
+  data: PropTypes.arrayOf(PokemonType).isRequired,
+  loading: PropTypes.bool.isRequired
 }
 
 export default List
