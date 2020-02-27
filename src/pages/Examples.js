@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import Headline from '../Headline'
+import Headline from '../components/Headline'
 import useToggleMessage from '../hooks/useToggleMessage'
 
 class BadWay extends Component {

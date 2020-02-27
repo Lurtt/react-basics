@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
-import Headline from '../Headline'
-import PokemonList from '../PokemonList'
+import Headline from '../components/Headline'
+import PokemonList from '../components/PokemonList'
 
 const Home = () => {
 
