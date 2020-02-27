@@ -1,0 +1,9 @@
+.root {
+  padding: 2rem;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  column-gap: 1rem;
+}

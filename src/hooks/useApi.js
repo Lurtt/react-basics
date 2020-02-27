@@ -9,16 +9,23 @@ const useApi = (url) => {
     let didCancel = false;
 
     const fetchData = async () => {
-      if (!didCancel) {
-        setLoading(true)
+      try {
         const response = await pokemonAxios.get(url)
 
-        //simulate long api call
-        setTimeout(() => {
-          setData(response.data.results)
+        if (!didCancel) {
+          setLoading(true)
+          //simulate long api call
+          setTimeout(() => {
+            setData(response.data.results)
+            setLoading(false)
+          }, 2000)
+        }
+      } catch (error) {
+        if(!didCancel) {
           setLoading(false)
-        }, 3000)
+        }
       }
+      
     }
 
     fetchData()
