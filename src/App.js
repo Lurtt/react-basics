@@ -1,26 +1,25 @@
-import React, { Fragment } from 'react';
-import { Switch, Route } from "react-router-dom";
+import React from 'react'
+import { Switch, Route } from "react-router-dom"
 
+import { UserProvider } from './contexts/userContext'
 import Home from './pages/Home'
 import Examples from './pages/Examples'
 import Header from './components/Header'
 
-const App = () => {
+const App = () => (
+  <UserProvider>
+    <Header />
 
-  return (
-    <Fragment>
-      <Header />
+    <Switch>
+      <Route path="/examples">
+        <Examples />
+      </Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
+  </UserProvider>
+)
 
-      <Switch>
-        <Route path="/examples">
-          <Examples />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Fragment>
-  )
-}
 
 export default App;

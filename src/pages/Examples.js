@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment, useContext } from 'react';
 
+import UserContext from '../contexts/userContext'
 import Headline from '../components/Headline'
 import useToggleMessage from '../hooks/useToggleMessage'
 
@@ -48,11 +49,49 @@ const GoodWay = () => {
 }
 
 const Home = () => {
+  const { user, onLogin, onLogout } = useContext(UserContext)
+
+  const handleOnChange = (key, value) => onLogin({
+    ...user,
+    [key]: value
+  })
+
+  // const saveFirstname = ({ target }) => onLogin({
+  //   firstname: target.value,
+  //   lastname,
+  //   email,
+  // })
+
+  // const saveLastname = ({ target }) => onLogin({
+  //   firstname,
+  //   lastname: target.value,
+  //   email,
+  // })
+
+  // const saveEmail = ({ target }) => onLogin({
+  //   firstname,
+  //   lastname,
+  //   email: target.value,
+  // })
 
   return (
     <Fragment>
       <BadWay />
       <GoodWay />
+      <hr />
+      <div>{user.firstname}, {user.lastname}, {user.email}</div>
+      <div>
+        <input type="text" placeholder="firstname" onChange={({ target }) => handleOnChange("firstname", target.value)} />
+        <input type="text" placeholder="lastname" onChange={({ target }) => handleOnChange("lastname", target.value)} />
+        <input type="text" placeholder="email" onChange={({ target }) => handleOnChange("email", target.value)} />
+
+        {/*
+          <input type="text" placeholder="lastname" onChange={saveLastname} />
+          <input type="text" placeholder="email" onChange={saveEmail} />
+        */}
+
+        <button onClick={onLogout}>Reset</button>
+      </div>
     </Fragment>
   )
 }
