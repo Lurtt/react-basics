@@ -3,6 +3,7 @@ import React, { Component, Fragment, useContext } from 'react';
 import UserContext from '../contexts/userContext'
 import Headline from '../components/Headline'
 import useToggleMessage from '../hooks/useToggleMessage'
+import TextInput from '../components/TextInput'
 
 class BadWay extends Component {
   state = {
@@ -81,9 +82,9 @@ const Home = () => {
       <hr />
       <div>{user.firstname}, {user.lastname}, {user.email}</div>
       <div>
-        <input type="text" placeholder="firstname" onChange={({ target }) => handleOnChange("firstname", target.value)} />
-        <input type="text" placeholder="lastname" onChange={({ target }) => handleOnChange("lastname", target.value)} />
-        <input type="text" placeholder="email" onChange={({ target }) => handleOnChange("email", target.value)} />
+        <TextInput textColor="red" type="text" placeholder="firstname" onChange={({ target }) => handleOnChange("firstname", target.value)} />
+        <TextInput disabled type="text" placeholder="lastname" onChange={({ target }) => handleOnChange("lastname", target.value)} />
+        <TextInput type="text" placeholder="email" onChange={({ target }) => handleOnChange("email", target.value)} />
 
         {/*
           <input type="text" placeholder="lastname" onChange={saveLastname} />
